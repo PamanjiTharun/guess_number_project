@@ -1,0 +1,33 @@
+import random
+class GuessNumber:
+    def __init__(self):
+        self.target=random.randint(1,100)
+    def display(self,number):
+        if number<1 or number>100:
+            print("Enter number from 1 to 100: ")
+        elif number>self.target:
+            return "Too high"
+        elif number<self.target:
+            return "Too low"
+        else:
+            return "congratullation"
+        
+print("Enter Lower Bound: 1")
+print("Enter Upper Bound: 100")
+print("You have only 7 chances:  ")
+game=GuessNumber()
+attempt=1
+while(attempt<=7):
+    try:
+        n=int(input("Enter Your Guess Number: "))
+        p=game.display(n)
+        if p=="congratullation":
+            print(f"Congratullation You Gussed successfully {attempt}th try")
+            break
+        else:
+            print(p)
+            attempt+=1
+    except ValueError:
+        print("Invalid input Enter valid number! ")
+if attempt==8:
+    print(f"Better luck next time! The correct answer was {game.target}")
